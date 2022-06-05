@@ -17,7 +17,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private toastrService: ToastrService
   ) {
-    this.product = new Product();
+    this.product = new Product("", -1, "", "", 0, "", "", 0, 0, 0, false, "");
   }
 
   ngOnInit() {
@@ -31,10 +31,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     const x = this.productService.getProductById(id);
     x.subscribe(
       (product) => {
-        //PW: [todo now]
-
-        //const y = { ...(product.payload.toJSON() as Product), $key: id };
-        //this.product = y;
+        this.product = product;
       },
       (error) => {
         this.toastrService.error("Error while fetching Product Detail", error);

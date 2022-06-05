@@ -1,5 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
+import { domainToASCII } from "url";
+import { mockProductDtos2 } from "../mock_data/mock-product-dtos";
+import { ProductFactory } from "../models/factories/product-factory";
 import { Product } from "../models/product";
 import { AuthService } from "./auth.service";
 import { ToastrService } from "./toastr.service";
@@ -9,19 +12,37 @@ export class ProductService {
   products: Product[] = [];
   product: Product | undefined;
 
+  private factory: ProductFactory;
+
   constructor(
     private authService: AuthService,
     private toastrService: ToastrService
-  ) {}
+  ) {
+    this.factory = new ProductFactory();
+  }
 
   getProducts() {
-    //PW: [todo now]
+
+    //PW: for test purpose, using local test data.
+    //<<
+    mockProductDtos2.forEach(dto =>
+      this.products.push(this.factory.create(dto)));
+    //>>
+
     return of(this.products);
   }
 
 
   getProductById(key: string): Observable<Product> {
-    //PW: [todo now]
+
+    //PW: for test purpose, using local test data.
+    //<<
+    let found = mockProductDtos2.find(e => e.p == key); //PW: e.p is 'productkey'
+    if (found) {
+        this.product = this.factory.create(found);
+    }
+    //>>
+
     return of(this.product!);
   }
 

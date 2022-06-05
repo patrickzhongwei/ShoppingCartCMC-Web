@@ -33,9 +33,11 @@ export class ProductListComponent implements OnInit {
         this.loading = false;
         this.productList = [];
         product.forEach((element) => {
-          //PW: [todo now]
-          // const y = { ...element.payload.toJSON(), $key: element.key };
-          // this.productList.push(y as Product);
+
+          let found = this.productList.find(e => e.productId == element.productId);
+
+          if (!found)
+              this.productList.push(element);
         });
       },
       (err) => {

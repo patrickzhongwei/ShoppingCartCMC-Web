@@ -10,7 +10,7 @@
               <!--Card-->
               <div class="card card-cascade wider">
                 <!--Card image-->
-                <a [routerLink]="['/products/product', product.$key]">
+                <a [routerLink]="['/products/product', product.productkey]">
                   <div class="view overlay hm-white-slight">
                     <img
                       [src]="product.productImageUrl"
@@ -38,7 +38,7 @@
                   </a>
                   <h5 class="card-title">
                     <strong>
-                      <a [routerLink]="['/products/product', product.$key]">{{
+                      <a [routerLink]="['/products/product', product.productkey]">{{
                         product.productName
                       }}</a>
                     </strong>
@@ -49,13 +49,13 @@
 
                   <!--Card footer-->
                   <div class="card-footer">
-                    <span class="left">₹ {{ product.productPrice }}</span>
+                    <span class="left">$ {{ product.productPrice }}</span>
                     <span class="right">
                       <a
                         placement="top"
                         mdbTooltip="Quick Look"
                         container="body"
-                        [routerLink]="['/products/product', product.$key]"
+                        [routerLink]="['/products/product', product.productkey]"
                       >
                         <i class="fa fa-eye"></i>
                       </a>
