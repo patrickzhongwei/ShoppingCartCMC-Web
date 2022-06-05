@@ -13,7 +13,8 @@ export const mockProductDtos: any = [
     q /*productQuatity*/ : 99,
     i /*ratings*/ : 5,
     f /*favourite*/ : 1,
-    s /*productSeller*/ : "Apple"
+    s /*productSeller*/ : "Apple",
+    e /*currency*/ : "AUD"
   },
 
   {
@@ -28,7 +29,8 @@ export const mockProductDtos: any = [
     q /*productQuatity*/ : 99,
     i /*ratings*/ : 4,
     f /*favourite*/ : 0,
-    s /*productSeller*/ : "Realme"
+    s /*productSeller*/ : "Realme",
+    e /*currency*/ : "AUD"
   },
 
   {
@@ -43,7 +45,8 @@ export const mockProductDtos: any = [
     q /*productQuatity*/ : 89,
     i /*ratings*/ : 3,
     f /*favourite*/ : 0,
-    s /*productSeller*/ : "Motorolla"
+    s /*productSeller*/ : "Motorolla",
+    e /*currency*/ : "AUD"
   },
 
   {
@@ -58,7 +61,8 @@ export const mockProductDtos: any = [
     q /*productQuatity*/ : 89,
     i /*ratings*/ : 4,
     f /*favourite*/ : 0,
-    s /*productSeller*/ : "Oppo"
+    s /*productSeller*/ : "Oppo",
+    e /*currency*/ : "AUD"
   },
 
   {
@@ -73,7 +77,8 @@ export const mockProductDtos: any = [
     q /*productQuatity*/ : 69,
     i /*ratings*/ : 2,
     f /*favourite*/ : 0,
-    s /*productSeller*/ : "Nokia"
+    s /*productSeller*/ : "Nokia",
+    e /*currency*/ : "AUD"
   },
 ];
 
@@ -92,7 +97,8 @@ export const mockProductDtos2 : ProductDto[] = [
     99, //q /*productQuatity*/ :
     5, //i /*ratings*/ :
     true, //f /*favourite*/ :
-    "Apple" //s /*productSeller*/ :
+    "Apple", //s /*productSeller*/ :
+    "AUD" //e: string; /*currency*/
   ),
 
   new ProductDto(
@@ -107,7 +113,8 @@ export const mockProductDtos2 : ProductDto[] = [
     99, //q /*productQuatity*/ :
     4, //i /*ratings*/ :
     false, //f /*favourite*/ :
-    "Realme" //s /*productSeller*/ :
+    "Realme", //s /*productSeller*/ :
+    "AUD" //e: string; /*currency*/
   ),
 
   new ProductDto(
@@ -122,7 +129,8 @@ export const mockProductDtos2 : ProductDto[] = [
     89, //q /*productQuatity*/ :
     3, //i /*ratings*/ :
     false, //f /*favourite*/ :
-    "Motorolla" //s /*productSeller*/ :
+    "Motorolla", //s /*productSeller*/ :
+    "AUD" //e: string; /*currency*/
   ),
 
   new ProductDto(
@@ -137,7 +145,8 @@ export const mockProductDtos2 : ProductDto[] = [
     89, //q /*productQuatity*/ :
     4, //i /*ratings*/ :
     false, //f /*favourite*/ :
-    "Oppo" //s /*productSeller*/ :
+    "Oppo", //s /*productSeller*/ :
+    "AUD" //e: string; /*currency*/
   ),
 
   new ProductDto(
@@ -152,7 +161,8 @@ export const mockProductDtos2 : ProductDto[] = [
     69, //q /*productQuatity*/ :
     2, //i /*ratings*/ :
     false, //f /*favourite*/ :
-    "Nokia" //s /*productSeller*/ :
+    "Nokia", //s /*productSeller*/ :
+    "AUD" //e: string; /*currency*/
   ),
 
  ];

@@ -17,7 +17,8 @@ export class ProductFactory {
       dto.q, /*productQuatity*/
       dto.i, /*ratings*/
       dto.f, /*favourite*/
-      dto.s /*productSeller*/
+      dto.s, /*productSeller*/
+      dto.e  /*currency*/
     );
   }
 }

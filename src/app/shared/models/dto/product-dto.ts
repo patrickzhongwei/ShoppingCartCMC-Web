@@ -17,6 +17,7 @@
   i: number; /*ratings*/
   f: boolean; /*favourite*/
   s: string; /*productSeller*/
+  e: string; /*currency*/
 
   constructor(
     productkey: string,
@@ -30,7 +31,8 @@
     productQuatity: number,
     ratings: number,
     favourite: boolean,
-    productSeller: string
+    productSeller: string,
+    currency: string
   ) {
 
     this.p = productkey;
@@ -47,5 +49,6 @@
 
     this.f = favourite;
     this.s = productSeller;
+    this.e = currency;
   }
 }

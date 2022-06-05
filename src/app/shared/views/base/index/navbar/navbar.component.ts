@@ -25,11 +25,11 @@ export class NavbarComponent implements OnInit {
     private themeService: ThemeService
   ) {
 
-      this.Australia_AUD = this.themeService.Australia_AUD;
-      this.NewZealand_NZD = this.themeService.NewZealand_NZD;
-      this.US_USD = this.themeService.US_USD;
+      this.Australia_AUD  = this.themeService.Australia_AUD_View;
+      this.NewZealand_NZD = this.themeService.NewZealand_NZD_View;
+      this.US_USD         = this.themeService.US_USD_View;
 
-      this.selectedCountryAndCcy = this.themeService.Australia_AUD;
+      this.selectedCountryAndCcy = this.themeService.getCurrentCountryAndCcyView();
 
       console.log(translate.data);
   }
@@ -44,7 +44,13 @@ export class NavbarComponent implements OnInit {
     let countryCcyArray: string[] = this.selectedCountryAndCcy.replace(')', '').split('(');
 
     //PW: persiste state at local storage
-    this.themeService.updateCurrencyAndCcy(countryCcyArray[0].trim(), countryCcyArray[1].trim());
+    this.themeService.updateCountryAndCcy(countryCcyArray[0].trim(), countryCcyArray[1].trim());
+
+    //PW: navigate to any path, then go to current url in order to refresh current component.
+    let currentUrl: string = this.router.url;
+    this.router.navigateByUrl(`/`, { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
 
   }
 }

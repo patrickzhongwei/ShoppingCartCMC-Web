@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Product } from "src/app/shared/models/product";
 import { ProductService } from "src/app/shared/services/product.service";
+import { ThemeService } from "src/app/shared/services/theme.service";
 
 @Component({
   selector: "app-products",
@@ -9,14 +10,13 @@ import { ProductService } from "src/app/shared/services/product.service";
 })
 export class ProductsComponent implements OnInit {
   checkoutProducts: Product[];
+  currentCcy: string;
 
   totalPrice = 0;
-  constructor(productService: ProductService) {
-    document.getElementById("shippingTab")!.style.display = "none";
-    document.getElementById("billingTab")!.style.display = "none";
-    document.getElementById("resultTab")!.style.display = "none";
+  constructor(productService: ProductService, themeService: ThemeService) {
 
-    const products = productService.getLocalCartProducts();
+    const products  = productService.getLocalCartProducts();
+    this.currentCcy = themeService.getCurrentCcy();
 
     this.checkoutProducts = products;
 

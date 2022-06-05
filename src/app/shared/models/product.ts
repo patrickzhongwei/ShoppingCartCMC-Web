@@ -11,6 +11,7 @@ export class Product {
   ratings:            number;
   favourite:          boolean;
   productSeller:      string;
+  currency:           string;
 
   constructor(
     productkey:         string,
@@ -24,7 +25,8 @@ export class Product {
     productQuatity:     number,
     ratings:            number,
     favourite:          boolean,
-    productSeller:      string
+    productSeller:      string,
+    currency:           string
   ) {
     this.productkey       = productkey;
     this.productId        = productId;
@@ -40,5 +42,6 @@ export class Product {
 
     this.favourite      = favourite;
     this.productSeller  = productSeller;
+    this.currency       = currency;
   }
 }

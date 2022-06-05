@@ -17,7 +17,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     private productService: ProductService,
     private toastrService: ToastrService
   ) {
-    this.product = new Product("", -1, "", "", 0, "", "", 0, 0, 0, false, "");
+    this.product = new Product("", -1, "", "", 0, "", "", 0, 0, 0, false, "", "");
   }
 
   ngOnInit() {
