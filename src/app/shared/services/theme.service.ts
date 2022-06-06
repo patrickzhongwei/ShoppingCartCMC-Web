@@ -58,7 +58,7 @@ export class ThemeService {
   // PW: Update currentCountry and currentCcy, and them persist them into localStorage. */
 /**
  * @param {string} country - A country name.
- * @param {string=} ccyCode - A country's currency code.
+ * @param {string} ccyCode - A country's currency code.
  */
   updateCountryAndCcy(country : string, ccyCode: string) {
     //PW: update local variables

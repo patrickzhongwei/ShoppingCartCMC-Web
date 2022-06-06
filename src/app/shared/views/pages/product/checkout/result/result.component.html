@@ -18,11 +18,13 @@
       <div class="row">
         <div class="col-xs-6 col-sm-6 col-md-6">
           <address>
-            <strong>ikismail</strong>
+            <strong>CMC Markets Asia Pacific PTY Ltd</strong>
             <br />
-            Tamil Nadu, IN 600094
-            <br />
-            <abbr title="Phone">P:</abbr> (+91) 8124794942
+            Level 20, Tower 3, International Towers
+            <br/>
+            300 Barangaroo Avenue
+            <br/>
+            NSW 2000 - Sydney - Australia
           </address>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6 text-right">
@@ -30,7 +32,7 @@
             <em>Date: {{ date | date }}</em>
           </p>
           <p>
-            <em>Receipt #: 34522677W</em>
+            <em>Receipt #: 1234568</em>
           </p>
         </div>
       </div>
@@ -48,16 +50,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let product of products">
-              <td class="col-md-9">
-                <h6>
-                  <em>{{ product.productName }}</em>
-                </h6>
-              </td>
-              <td></td>
-              <td class="col-md-1 text-center">$ {{ product.productPrice }}</td>
-              <td class="col-md-1 text-center">$ {{ product.productPrice }}</td>
-            </tr>
+            <!--PW: add product list here-->
             <tr>
               <td></td>
               <td></td>
@@ -71,10 +64,10 @@
               </td>
               <td class="text-center">
                 <p>
-                  <strong>{{ totalPrice }}</strong>
+                  <strong><!--PW: add totalPrice here--></strong>
                 </p>
                 <p>
-                  <strong>$ {{ tax }}</strong>
+                  <strong><!--PW: add tax here--></strong>
                 </p>
               </td>
             </tr>
@@ -86,14 +79,14 @@
               </td>
               <td class="text-center text-danger">
                 <h4>
-                  <strong>$ {{ totalPrice + tax }}</strong>
+                  <strong><!--PW: add totalPrice + tax here--></strong>
                 </h4>
               </td>
             </tr>
           </tbody>
         </table>
-        <button type="button" class="btn btn-success btn-lg btn-block">
-          Pay Now <span class="glyphicon glyphicon-chevron-right"></span>
+        <button (click)="finish()" type="button" class="btn btn-success btn-lg btn-block">
+          Your order is placed successfully. Thank you!' <span class="glyphicon glyphicon-chevron-right"></span>
         </button>
       </div>
     </div>

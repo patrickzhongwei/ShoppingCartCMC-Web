@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { Router } from "@angular/router";
 import html2canvas from "html2canvas";
 import { Product } from "src/app/shared/models/product";
 import { ProductService } from "src/app/shared/services/product.service";
@@ -9,17 +10,16 @@ declare var $: any;
   styleUrls: ["./result.component.scss"],
 })
 export class ResultComponent implements OnInit {
+
+  /** *
+   * Patrick: [todo in future].
+   */
   products: Product[];
   date: number;
   totalPrice = 0;
-  tax = 6.4;
+  tax = 0;
 
-  constructor(private productService: ProductService) {
-    /* Hiding Billing Tab Element */
-    document.getElementById("productsTab")!.style.display = "none";
-    document.getElementById("shippingTab")!.style.display = "none";
-    document.getElementById("billingTab")!.style.display = "none";
-    document.getElementById("resultTab")!.style.display = "block";
+  constructor(private productService: ProductService, private router: Router) {
 
     this.products = productService.getLocalCartProducts();
 
@@ -33,20 +33,14 @@ export class ResultComponent implements OnInit {
   ngOnInit() {}
 
   downloadReceipt() {
-    const data = document.getElementById("receipt")!;
-    // console.log(data);
-
-    html2canvas(data).then((canvas) => {
-      // Few necessary setting options
-      const imgWidth = 208;
-      const pageHeight = 295;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      const heightLeft = imgHeight;
-
     /** *
      * Patrick: [todo in future].
      */
+  }
 
-    });
+
+  finish() {
+    //PW: direct to home
+    this.router.navigate(["/"]);
   }
 }

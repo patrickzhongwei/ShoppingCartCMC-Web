@@ -4,6 +4,8 @@
  * 2- minification rule must be identical to server side DTO.
  */
 
+import { ProductDto } from "./product-dto";
+
 export class BillingDto {
   s:  number; /*subTotal*/
   h:  number; /*shippingFee*/
@@ -16,6 +18,7 @@ export class BillingDto {
   c:  string; /*country*/
   e:  string; /*state*/
   z:  string; /*zip*/
+  p:  ProductDto[]; /*products*/
 
   constructor(
     subTotal:  number,
@@ -29,6 +32,7 @@ export class BillingDto {
     country:  string,
     state:  string,
     zip:  string,
+    productDtos: ProductDto[]
   ) {
     this.s = subTotal;
     this.h = shippingFee;
@@ -43,5 +47,6 @@ export class BillingDto {
     this.e = state;
 
     this.z = zip;
+    this.p = productDtos;
   }
 }

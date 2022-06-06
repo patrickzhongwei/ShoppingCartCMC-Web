@@ -18,21 +18,24 @@
       </div>
       <span class="text-muted">$ {{ product.productPrice }}</span>
     </li>
+
+    <hr />
+    <li class="list-group-item d-flex justify-content-between">
+      <span>Shipping Fee</span>
+      <strong>$ {{ shippingFee }}</strong>
+    </li>
+
     <hr />
     <li class="list-group-item d-flex justify-content-between">
       <span>Total ({{currentCcy}})</span>
       <strong>$ {{ totalPrice }}</strong>
     </li>
   </ul>
-  <div class="float-right">
+  <div class="float-right text-white">
     <a
-      class="btn btn-default"
-      [routerLink]="[
-        '/checkouts',
-        { outlets: { checkOutlet: ['shipping-details'] } }
-      ]"
-      routerLinkActive="active"
-      >Next</a
+      class="btn btn-primary"
+      (click)="placeOder()"
+      >Place Order</a
     >
   </div>
 </div>

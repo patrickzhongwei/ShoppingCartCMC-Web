@@ -154,7 +154,7 @@ export const mockProductDtos2 : ProductDto[] = [
     10005, //r /*productId*/ :
     "Nokia 8.1", //o /*productName*/:
     "Smartphone", //d /*productCategory*/ :
-    3000, //u /*productPrice*/ :
+    45, //u /*productPrice*/ :
     `4 GB RAM | 64 GB ROM | 15.7 cm (6.18 inch) Full HD+ Display 12MP + 13MP | 20MP Front Camera 3500 mAh Battery Qualcomm Snapdragon 710 Processor`, //c /*productDescription*/ :
     "https://i.ibb.co/g9Vk9jc/nokia8-1.jpg", //t /*productImageUrl*/ :
     1654414953, //a /*productAdded*/ :

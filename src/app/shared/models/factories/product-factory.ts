@@ -3,6 +3,11 @@ import { Product } from "../product";
 
 export class ProductFactory {
 
+  // PW: create Product instance from ProductDto
+/**
+ * @param {ProductDto} dto - a ProductDto instance
+ * @returns {Product} return Product instance
+ */
   create(dto: ProductDto): Product {
 
     return new Product(
@@ -21,4 +26,30 @@ export class ProductFactory {
       dto.e  /*currency*/
     );
   }
+
+
+   // PW: create ProductDto instance from Product
+/**
+ * @param {Product} product - a Product instance
+ * @returns {ProductDto} return a ProductDto instance
+ */
+createDto(product: Product): ProductDto {
+  return new ProductDto(
+    product.productkey,
+    product.productId,
+    product.productName,
+    product.productCategory,
+    product.productPrice,
+    product.productDescription,
+    product.productImageUrl,
+    product.productAdded,
+    product.productQuatity,
+    product.ratings,
+    product.favourite,
+    product.productSeller,
+    product.currency
+  );
+
+}
+
 }

@@ -53,6 +53,12 @@ export class ProductService {
   // Adding new Product to cart db if logged in else localStorage
   addToCart(data: Product): void {
     const a: Product[] = JSON.parse(localStorage.getItem("avct_item")!) || [];
+
+    data.productQuatity = 1; //PW: here quantity is not handled, always set to '1' for timebeing
+    /** *
+     * Patrick: [todo in future].
+     */
+
     a.push(data);
 
     this.toastrService.wait(
