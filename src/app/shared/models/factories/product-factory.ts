@@ -52,4 +52,23 @@ createDto(product: Product): ProductDto {
 
 }
 
+
+
+  // PW: create Product[] instance from ProductDto[]
+/**
+ * @param {ProductDto[]} product - a ProductDto array instance
+ * @returns {Product[]} return a Product[] instance
+ */
+ createBatch(dtos: ProductDto[]): Product[]
+ {
+     let products: Product[] = [];
+
+     dtos.forEach(e => {
+         if(e)
+             products.push(this.create(e));
+     });
+
+     return products;
+ }
+
 }

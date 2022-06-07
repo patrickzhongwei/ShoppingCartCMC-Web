@@ -1,10 +1,15 @@
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
+import { map } from "rxjs/operators";
+import { shoppingUrl } from "src/environments/environment";
 import { domainToASCII } from "url";
 import { mockProductDtos2 } from "../mock_data/mock-product-dtos";
+import { ProductDto } from "../models/dto/product-dto";
 import { ProductFactory } from "../models/factories/product-factory";
 import { Product } from "../models/product";
 import { AuthService } from "./auth.service";
+import { ThemeService } from "./theme.service";
 import { ToastrService } from "./toastr.service";
 
 @Injectable()
@@ -16,7 +21,9 @@ export class ProductService {
 
   constructor(
     private authService: AuthService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private themeService: ThemeService,
+    private http: HttpClient
   ) {
     this.factory = new ProductFactory();
   }
@@ -28,12 +35,45 @@ export class ProductService {
  */
   getProducts(): Observable<Product[]> {
 
-    //PW: for test purpose, using local test data.
-    mockProductDtos2.forEach(dto =>
-      this.products.push(this.factory.create(dto)));
+    //PW: for unit test purpose, using local test data.
+    //**************************************************************************** */
+    //mockProductDtos2.forEach(dto => this.products.push(this.factory.create(dto)));
+    //return of(this.products);
+    /***************************************************************************** */
 
-    return of(this.products);
+
+    let factory = new ProductFactory();
+    let newProducts: Product[] = [];
+
+    return this.requestProductDtos().pipe(
+      map(dtos => {
+
+        let newProducts = factory.createBatch(dtos);
+
+        if(newProducts.length > 0)
+          this.products = newProducts;
+
+        return factory.createBatch(dtos);
+      })
+    );
   }
+
+
+
+// PW: private method called by getProducts()
+/**
+ * @returns {} - return an Observable<Product[]> object
+ */
+ private requestProductDtos(): Observable<ProductDto[]> {
+
+  let currentCcy = this.themeService.getCurrentCcy();
+
+  let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  let url     = `${shoppingUrl.root}/api/products`;
+  let params  = new HttpParams().set("ccyCode", currentCcy);
+
+  return this.http.get<ProductDto[]>(url, { headers: headers, params: params });
+}
 
 
 // PW: get a product by Id
@@ -44,12 +84,35 @@ export class ProductService {
   getProductById(key: string): Observable<Product> {
 
     //PW: for test purpose, using local test data.
-    let found = mockProductDtos2.find(e => e.p == key); //PW: e.p is 'productkey'
-    if (found) {
-        this.product = this.factory.create(found);
-    }
+    //**************************************************************************** */
+    // let found = mockProductDtos2.find(e => e.p == key); //PW: e.p is 'productkey'
+    // if (found) {
+    //     this.product = this.factory.create(found);
+    // }
+    /***************************************************************************** */
 
-    return of(this.product!);
+    return this.requestProductDtoById(key).pipe(
+      map(dto => {
+
+        let factory = new ProductFactory();
+        let newProduct = factory.create(dto);
+        this.product = newProduct;
+
+        return newProduct;
+      })
+    );
+  }
+
+
+  requestProductDtoById(key: string): Observable<ProductDto> {
+
+    let currentCcy = this.themeService.getCurrentCcy();
+
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    let url     = `${shoppingUrl.root}/api/product`;
+    let params  = new HttpParams().set("ccyCode", currentCcy).set("key", key);
+
+    return this.http.get<ProductDto>(url, { headers: headers, params: params });
   }
 
 
