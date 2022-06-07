@@ -4,8 +4,10 @@ import { BehaviorSubject, Observable, of } from "rxjs";
 import { filter, map } from "rxjs/operators";
 import { User } from "../models/user";
 
-/** *
+/** *********************************************************************
  * Patrick: [not used. leave for futuer development].
+ * redirect to STS server, get Json security token after successul logging
+ * **********************************************************************
  */
 
 @Injectable()

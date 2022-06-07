@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { Billing } from "src/app/shared/models/billing";
 import { BillingFactory } from "src/app/shared/models/factories/billing-factory";
 import { ToastrService } from "src/app/shared/services/toastr.service";
+import { ShippingService } from "src/app/shared/services/shipping.service";
 
 @Component({
   selector: "app-products",
@@ -21,7 +22,12 @@ export class ProductsComponent implements OnInit {
   subTotal: number = 0;
   shippingFee: number = 0;
 
-  constructor(productService: ProductService, themeService: ThemeService, private billingService: BillingService, private router: Router, private toastrService: ToastrService) {
+  constructor(productService: ProductService,
+    themeService: ThemeService,
+    private billingService: BillingService,
+    private shippingService: ShippingService,
+    private router: Router,
+    private toastrService: ToastrService) {
 
     const products  = productService.getLocalCartProducts();
     this.currentCcy = themeService.getCurrentCcy();
@@ -34,7 +40,7 @@ export class ProductsComponent implements OnInit {
 
     //PW: only request shipping fee if totalPrice is valid.
     if (this.totalPrice > 0) {
-      billingService.getShippingFee(this.totalPrice, this.currentCcy).subscribe(fee => {
+      shippingService.getShippingFee(this.totalPrice, this.currentCcy).subscribe(fee => {
           this.shippingFee = fee;
           this.totalPrice += fee;
       });
