@@ -7,7 +7,7 @@ export const environment = {
 };
 
 export const shoppingUrl = {
-  root: "https://localhost:44377"
+  root: "https://localhost:44377" //PW: please change to your localhost
 }
 
 /*

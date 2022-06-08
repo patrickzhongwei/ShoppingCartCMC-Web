@@ -40,7 +40,7 @@ export class ProductsComponent implements OnInit {
 
     //PW: only request shipping fee if totalPrice is valid.
     if (this.totalPrice > 0) {
-      shippingService.getShippingFee(this.totalPrice, this.currentCcy).subscribe(fee => {
+      shippingService.getShippingFee(this.totalPrice).subscribe(fee => {
           this.shippingFee = fee;
           this.totalPrice += fee;
       });
@@ -71,6 +71,7 @@ export class ProductsComponent implements OnInit {
     );
 
     let result = this.billingService.placeOrder(newBilling);
+    //this.billingService.placeOrder2(newBilling);
 
     result.subscribe(errorCode => {
         if (errorCode == 0) { //PW: succeed

@@ -60,7 +60,7 @@ export class ProductService {
 
 
 
-// PW: private method called by getProducts()
+// PW: PW: make http get, retrieve ProductDto[] data from server
 /**
  * @returns {} - return an Observable<Product[]> object
  */
@@ -103,8 +103,12 @@ export class ProductService {
     );
   }
 
-
-  requestProductDtoById(key: string): Observable<ProductDto> {
+ // PW: make http get, retrieve a ProductDto data from server
+/**
+ * @param {string}  key - A product key.
+ * @returns {string} A Observable<ProductDto> instance
+ */
+  private requestProductDtoById(key: string): Observable<ProductDto> {
 
     let currentCcy = this.themeService.getCurrentCcy();
 
