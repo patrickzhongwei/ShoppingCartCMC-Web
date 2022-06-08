@@ -1,10 +1,14 @@
-# ShoppingCartCMCWeb
+# ShoppingCartCMC-Web
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.14.
+The ShoppingCartCMC project contains two parts: client side and server side. `ShoppingCartCMC-Web` is client side. The server side can be find from [ShoppingCartCMC-Server](https://github.com/patrickzhongwei/ShoppingCartCMC-Server). This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.14.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.  
+
+## Development API server
+
+Current back-end API server is set as `https://localhost:44377`, its can be changed from variable `shoppingUrl` in `environment.ts` file. Run server-side API project for getting your new localhost port, and replace `44377' with yours.
 
 ## Code scaffolding
 
