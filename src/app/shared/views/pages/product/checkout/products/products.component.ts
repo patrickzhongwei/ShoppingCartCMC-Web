@@ -71,10 +71,9 @@ export class ProductsComponent implements OnInit {
     );
 
     let result = this.billingService.placeOrder(newBilling);
-    //this.billingService.placeOrder2(newBilling);
 
-    result.subscribe(errorCode => {
-        if (errorCode == 0) { //PW: succeed
+    result.subscribe(orderNum => {
+        if (orderNum > 0) { //PW: succeed
             this.router.navigate([
               "checkouts",
               { outlets: { checkOutlet: ["result"] } },

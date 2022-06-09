@@ -60,30 +60,22 @@ export class BillingService {
 
     //PW: for unit test purpose, using local test data.
     //**************************************************/
-     return of(0);
+    // return of(0);
     /************************************************* */
 
     //PW: generate billing json string
-    // todo: buggy here, 400 error. related to serialize/deserialize json object
-    //....................
      let factory: BillingFactory = new BillingFactory();
      let billingDto = factory.createDto(billing);
+
+     return this.submit(billingDto);
   }
 
   //PW: httpClient.put() -> update
-  private submit(billingDto: BillingDto)  {
+  private submit(billingDto: BillingDto) : Observable<number>  {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     let url     = `${shoppingUrl.root}/api/billing`;
 
-    this.http.put<any>(url, billingDto)
-        .subscribe({
-            next: data => {
-              console.log(data);
-            },
-            error: error => {
-                console.error('There was an error!', error);
-            }
-        });
+    return this.http.put<number>(url, billingDto);
   }
 
 }
