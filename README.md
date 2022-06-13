@@ -8,7 +8,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Development API server
 
-Current back-end API server is set as `https://localhost:44377`, its can be changed from variable `shoppingUrl` in `environment.ts` file. Run server-side API project for getting your new localhost port, and replace `44377' with yours.
+Current back-end API server is set as `https://localhost:44377`, its can be changed from variable `shoppingApiUrl` in `environment.ts` file. Run server-side API project for getting your new localhost port, and replace `44377' with yours.
 
 ## Code scaffolding
 

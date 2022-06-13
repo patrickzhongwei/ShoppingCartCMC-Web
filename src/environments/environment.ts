@@ -3,12 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  shoppingApiUrl: "https://localhost:44377" //PW: please change to your localhost
 };
 
-export const shoppingUrl = {
-  root: "https://localhost:44377" //PW: please change to your localhost
-}
 
 /*
  * For easier debugging in development mode, you can import the following file

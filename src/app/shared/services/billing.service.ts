@@ -4,9 +4,9 @@ import { observable, Observable, of } from "rxjs";
 import { BillingFactory } from "../models/factories/billing-factory";
 import { mockBilling } from "../mock_data/mock-billing";
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from "@angular/common/http";
-import { shoppingUrl } from "src/environments/environment";
 import { BillingDto } from "../models/dto/billing-dto";
 import { catchError, map } from "rxjs/operators";
+import { environment } from "src/environments/environment";
 
 
 @Injectable({
@@ -44,7 +44,7 @@ export class BillingService {
   private requestIndirectRate(ccyPair: string) : Observable<number> {
 
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    let url     = `${shoppingUrl.root}/api/market`;
+    let url     = `${environment.shoppingApiUrl}/api/market`;
     let params  = new HttpParams().set("ccyPair", ccyPair);
 
     return this.http.get<number>(url, { headers: headers, params: params });
@@ -73,7 +73,7 @@ export class BillingService {
   //PW: httpClient.put() -> update
   private submit(billingDto: BillingDto) : Observable<number>  {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    let url     = `${shoppingUrl.root}/api/billing`;
+    let url     = `${environment.shoppingApiUrl}/api/billing`;
 
     return this.http.put<number>(url, billingDto);
   }

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { map } from "rxjs/operators";
-import { shoppingUrl } from "src/environments/environment";
+import { environment } from "src/environments/environment";
 import { domainToASCII } from "url";
 import { mockProductDtos2 } from "../mock_data/mock-product-dtos";
 import { ProductDto } from "../models/dto/product-dto";
@@ -69,7 +69,7 @@ export class ProductService {
   let currentCcy = this.themeService.getCurrentCcy();
 
   let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  let url     = `${shoppingUrl.root}/api/products`;
+  let url     = `${environment.shoppingApiUrl}/api/products`;
   let params  = new HttpParams().set("ccyCode", currentCcy);
 
   return this.http.get<ProductDto[]>(url, { headers: headers, params: params });
@@ -113,7 +113,7 @@ export class ProductService {
     let currentCcy = this.themeService.getCurrentCcy();
 
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    let url     = `${shoppingUrl.root}/api/product`;
+    let url     = `${environment.shoppingApiUrl}/api/product`;
     let params  = new HttpParams().set("ccyCode", currentCcy).set("key", key);
 
     return this.http.get<ProductDto>(url, { headers: headers, params: params });

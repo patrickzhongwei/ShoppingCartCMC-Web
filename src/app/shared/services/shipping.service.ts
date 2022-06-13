@@ -4,7 +4,8 @@ import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { ThemeService } from "./theme.service";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { shoppingUrl } from "src/environments/environment";
+import { environment } from "src/environments/environment";
+
 
 @Injectable({
   providedIn: "root",
@@ -43,7 +44,7 @@ export class ShippingService {
     let currentCcy = this.themeService.getCurrentCcy();
 
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    let url     = `${shoppingUrl.root}/api/shipping`;
+    let url     = `${environment.shoppingApiUrl}/api/shipping`;
     let params  = new HttpParams().set("ccyCode", currentCcy).set("cartSumPrice", cartSumPrice);
 
     return this.http.get<number>(url, { headers: headers, params: params });
