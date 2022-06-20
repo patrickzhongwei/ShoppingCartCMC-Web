@@ -117,6 +117,17 @@ export class ProductService {
     let params  = new HttpParams().set("ccyCode", currentCcy).set("key", key);
 
     return this.http.get<ProductDto>(url, { headers: headers, params: params });
+
+    //PW: test one
+    // let id: number = 5;
+    // let url = `${environment.shoppingApiUrl}/api/test/${key}`;
+    // return this.http.get<ProductDto>(url);
+
+    //PW: test two
+    // let ccy: string = 'AUD';
+    // let url = `${environment.shoppingApiUrl}/api/test/${key}/${ccy}`;
+    // return this.http.get<ProductDto>(url);
+
   }
 
 
