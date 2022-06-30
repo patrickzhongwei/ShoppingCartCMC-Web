@@ -1,3 +1,4 @@
+import { PricingService } from './../../../../services/pricing.service';
 import { AfterViewInit, Component, OnInit, VERSION } from "@angular/core";
 import { Router } from "@angular/router";
 import { ProductService } from "src/app/shared/services/product.service";
@@ -22,6 +23,7 @@ export class NavbarComponent implements OnInit {
     private router: Router,
     public productService: ProductService,
     public translate: TranslateService,
+    public pricingService: PricingService,
     private themeService: ThemeService
   ) {
 
