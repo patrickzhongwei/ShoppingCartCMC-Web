@@ -21,12 +21,15 @@ export class PricingService {
 
 
   public connectHub(): void {
-    //PW: when connect to shoppingApiUrl, have to set skipNegotiation and transport as below, or not working
+    //PW: when connect to shoppingApiUrl, have to set skipNegotiation to true and transport to signalR.HttpTransportType.WebSockets as below, otherwise it won't work.
+    //    The issue now resolved: server-side MyCorsPolicy setting should be
+    //    ".WithOrigins(new string[] { "http://localhost:4200" })", rather than .WithOrigins(new string[] { "http://localhost:4200/" })
+    //    It should not have slash at origin.
     this._hubConnection = new HubConnectionBuilder()
     //.configureLogging(signalR.LogLevel.Debug)
     .withUrl(`${environment.shoppingApiUrl}/signalrPricing`, {
-      skipNegotiation: true,
-      transport: signalR.HttpTransportType.WebSockets
+      //skipNegotiation: true,
+      //transport: signalR.HttpTransportType.WebSockets
     }).build();
 
     //PW: when connect to GuruHedge https://localhost:44359/signalrAnalytics, don't need to set skipNegotiation or transport.
